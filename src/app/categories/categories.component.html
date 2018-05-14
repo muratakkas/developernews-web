@@ -1,0 +1,21 @@
+<div class="row" style="margin:10px;"  *ngIf="IsShowAddButtons()"  >
+    <button mat-mini-fab color="primary"  (click)="Add()" >
+      <mat-icon>add</mat-icon>
+    </button>
+</div> 
+
+<div class="grid grid--type-c">
+  <div class="grid__sizer"></div>
+  <div class="grid__item"  *ngFor="let item of this.categories" > 
+      <a class="grid__link" [routerLink]=""  (click)="OpenNews(item.Id)" > <img  class="grid__img"   style=" height: 200px;   width: 100%; "  [src]="GetImageAsBase64(item)"> </a>
+
+      <button class="editbutton" mat-mini-fab color="primary"  (click)="Edit(item.Id)"  *ngIf="IsShowEditButtons(item.CreateUser)" >
+            <mat-icon>edit</mat-icon>
+          </button>
+      <button class="deletebutton" mat-mini-fab color="primary"   (click)="Delete(item.Id)"   *ngIf="IsShowEditButtons(item.CreateUser)"  >
+          <mat-icon>delete</mat-icon>
+        </button>
+  </div>
+ 
+ 
+</div>

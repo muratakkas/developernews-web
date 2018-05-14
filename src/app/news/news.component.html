@@ -1,0 +1,31 @@
+  <div class="row" style="margin:10px;"   *ngIf="IsShowAddButtons()"  >
+      <button mat-mini-fab color="primary"  (click)="Add()" >
+        <mat-icon>add</mat-icon>
+      </button>
+  </div> 
+   
+  <div class="row">
+      <div class="col-lg-3 col-md-5 col-sm-8  col-xs-12" style="margin:10px;    max-width: 800px;"  *ngFor="let item of this.news" > 
+          <mat-card   class="example-card"  (click)="OpenDetails(item.Id)" > 
+              <mat-card-header style="    overflow: hidden;">  
+                <mat-card-title>{{item.Subject}}</mat-card-title>
+              </mat-card-header>
+              <img   style=" height: 200px;   width: 100%; "  [src]="GetImageAsBase64(item)"> 
+              <mat-card-content style="overflow: hidden;height:60px;   margin-top: 10px;">
+                <div [innerHTML]="GetContentFirstList(item)"> 
+                </div>
+              </mat-card-content>
+              <mat-card-actions style="height: 50px;" *ngIf="IsShowEditButtons(item.CreateUser)" > 
+                  <button mat-mini-fab color="primary"  (click)="Edit(item.Id)" >
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="primary"   (click)="Delete(item.Id)"   >
+                        <mat-icon>delete</mat-icon>
+                      </button> 
+              </mat-card-actions>
+            </mat-card>   
+      </div> 
+      <button style="width:100%" (click)="LoadMoreNews()" mat-button>Load More...</button>
+  </div> 
+   
+ 

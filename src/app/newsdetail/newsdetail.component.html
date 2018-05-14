@@ -1,0 +1,26 @@
+
+ 
+<div class="row"> 
+  <div class="col-lg-12"  > 
+      <div class="newsdetail"   *ngIf="currentNews"  >
+        <div class="header_container">
+
+            <div class="newsdetail__title">{{currentNews.Subject}}</div>
+          <div class="newsdetail__image">
+              <img    style="   width: 100%; "  [src]="GetImageAsBase64(currentNews)">  
+          </div>
+
+        </div> 
+
+        <mat-card   class="example-card"  (click)="OpenDetails(currentNews.Id)" > 
+            
+            <mat-card-content style=" margin-top: 10px;">
+                <div [innerHTML]="currentNews.Content"> 
+                  </div>
+            </mat-card-content>
+          
+          </mat-card>  
+ 
+        </div>
+    </div>
+</div>
