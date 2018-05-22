@@ -28,7 +28,7 @@
            
           </mat-nav-list>
         </mat-sidenav>
-        <mat-toolbar-row id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}"  >
+        <mat-toolbar-row id="appToolbar"    >
           <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
                   <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
           </button>

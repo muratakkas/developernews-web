@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit {
   private currentPage  = 0;
   private categoryId = 0;
 
-  private categories = new Array<Category>();
+  public categories = new Array<Category>();
   constructor(private categoryService : CategoryService,public dialog: DialogService,public notify: NotificationService, private route:ActivatedRoute,private router:Router,private _sanitizer: DomSanitizer,protected authService: AuthService) {  
   }
 

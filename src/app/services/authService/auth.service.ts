@@ -40,7 +40,7 @@ export class AuthService implements OnInit, OnDestroy {
 
 
         const authWellKnownEndpoints = new AuthWellKnownEndpoints();
-        const identityServerBaseUrl = 'http://localhost:5000'; 
+        const identityServerBaseUrl =identityUrl; 
         authWellKnownEndpoints.issuer = identityServerBaseUrl; 
         authWellKnownEndpoints.jwks_uri = identityServerBaseUrl +'/.well-known/openid-configuration/jwks';
         authWellKnownEndpoints.authorization_endpoint = identityServerBaseUrl + '/connect/authorize';

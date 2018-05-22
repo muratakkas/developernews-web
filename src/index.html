@@ -22,6 +22,24 @@
       </app-root>
       <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
       <script src="assets/js/jquery.js"></script> 
+      <script>
+      function LoadConfig()
+	{
+      $.ajax({
+      contentType: 'application/json; charset=utf-8',
+      url : document.baseURI+"assets/appsettings.json",
+      type : "get",
+      async: false,
+      success : function(config) {
+      document.appconfig = config;
+      } 
+ });
+  }
+
+  LoadConfig();
+  
+
+      </script>
       <script src="assets/js/imagesloaded.pkgd.min.js"></script>
       <script src="assets/js/masonry.pkgd.min.js"></script>
       <script src="assets/js/anime.min.js"></script>

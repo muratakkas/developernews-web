@@ -157,13 +157,13 @@ export class AppModule { }
 
 
 export function getBaseUrl() {
-  return "http://localhost:4200";
+  return  document["appconfig"]["WebServerUrl"];
 }
 
 export function apiUrlFactory() {
-  return "http://localhost:5001"; 
+  return document["appconfig"]["ApiServerUrl"] ; 
 }
 
 export function identityUrlFactory() {
-  return "http://localhost:5000"; 
+  return document["appconfig"]["IdentityServerUrl"]; 
 }

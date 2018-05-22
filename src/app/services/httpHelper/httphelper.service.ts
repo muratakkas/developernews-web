@@ -26,7 +26,7 @@ export class HttphelperService {
   constructor(private _http : HttpClient,private notify: NotificationService,private authService: AuthService) { }
  
   Post<T>(url,data) : Observable<T> 
-  {  
+  {   debugger;
     this.eventManager.emit(ProgressbarStatus.START);
     return this._http.post(url,data,{ headers: this.authService.getHeaders() })
     .map((response : any) => {
@@ -73,6 +73,7 @@ export class HttphelperService {
   }
   CatchException(error : any, eventManager : EventEmitter<ProgressbarStatus>, notify: NotificationService) {
     eventManager.emit(ProgressbarStatus.FINISH);
+   
     notify.error( error.message);
     return Observable.throw(error.message);
   }

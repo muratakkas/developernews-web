@@ -25,7 +25,7 @@ export class NewsComponent implements OnInit {
   private currentPage  = 0;
   private categoryId = 0;
   private categoryCreateUserId;
-  private news = new Array<News>();
+  public news = new Array<News>();
   constructor(private categoryService : CategoryService,private newsService : NewsService,public dialog: DialogService,public notify: NotificationService, private route:ActivatedRoute,private router:Router,private _sanitizer: DomSanitizer,protected authService: AuthService) {  
   }
 
