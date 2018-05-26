@@ -26,7 +26,7 @@ export class AuthService implements OnInit, OnDestroy {
     ) { 
         const openIdImplicitFlowConfiguration = new OpenIDImplicitFlowConfiguration();
         openIdImplicitFlowConfiguration.stsServer = identityUrl;
-        openIdImplicitFlowConfiguration.redirect_url = originUrl;
+        openIdImplicitFlowConfiguration.redirect_url =originUrl;
         openIdImplicitFlowConfiguration.client_id = 'dews.web';
         openIdImplicitFlowConfiguration.response_type = 'id_token token';
         openIdImplicitFlowConfiguration.scope = 'openid profile dews.api';
