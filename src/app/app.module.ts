@@ -35,13 +35,7 @@ import { InjectionToken } from '@angular/core';
 
 //Import Directives
 import { AuthGuard } from './directives/authguard/authguard';
-
-export function HttpLoaderFactory(http: HttpClient, baseHref: any) {
-  if (baseHref === null && typeof window !== 'undefined') {
-      baseHref = window.location.origin;
-  }
-  return new TranslateHttpLoader(http, `${baseHref}/assets/i18n/`, '.json');
-}
+ 
 
 import {
   MatAutocompleteModule,
@@ -137,14 +131,7 @@ import {
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-center', 
-    }), 
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient, [new InjectionToken<string>('ORIGIN_URL')]]
-      }
-  }) 
+    })
   ],
   entryComponents: [QuestiondialogComponent],
   providers: [AppsettingsService,HttphelperService,NewsService,CategoryService,ToastrService,DialogService,NotificationService,AuthService,OidcSecurityService,AuthGuard,
