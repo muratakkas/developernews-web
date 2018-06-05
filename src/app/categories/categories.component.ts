@@ -42,6 +42,10 @@ export class CategoriesComponent implements OnInit {
     return this.authService.CheckIsUserAuthorizedToEditDelete(userId);
   }
 
+  GoBack()
+  {
+    
+  }
   IsShowAddButtons()
   {
     return this.authService.isAuthenticated();

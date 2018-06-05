@@ -19,25 +19,30 @@
             <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="!sidenav.opened">
               <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
             </button>
-          </mat-toolbar>
+          </mat-toolbar> 
           <mat-nav-list>
             
             <a mat-list-item class="sidenav-link" [routerLink]="['/categories']" (click)="sidenav.toggle()"> 
               <span class="title" mat-line>Categories</span> 
-            </a>
-           
+            </a> 
+            <a mat-list-item class="sidenav-link"   (click)="Login()"   *ngIf="!isUserAuthorized"  > 
+              <span class="title" mat-line>Log In</span> 
+            </a> 
+            <a mat-list-item class="sidenav-link"   (click)="Logout()"    *ngIf ="isUserAuthorized"> 
+              <span class="title" mat-line>Log Out</span> 
+            </a> 
           </mat-nav-list>
         </mat-sidenav>
         <mat-toolbar-row id="appToolbar"    >
           <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
                   <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
-          </button>
-         
+                  
+          </button> 
           <span class="toolbar-filler"></span>
           <span  style="  flex: 1 1 auto;"></span>
           <label id="button-login"  >{{username}}</label> 
-          <button id="button-login" mat-button  (click)="Login()"   *ngIf="!isUserAuthorized"  >Log In</button> 
-          <button id="button-logout"    (click)="Logout()"    *ngIf ="isUserAuthorized"  mat-button>Log Out</button>
+          <button class="hidden-xs" id="button-login" mat-button  (click)="Login()"   *ngIf="!isUserAuthorized"  >Log In</button> 
+          <button class="hidden-xs" id="button-logout"    (click)="Logout()"    *ngIf ="isUserAuthorized"  mat-button>Log Out</button>
         </mat-toolbar-row>
         <div class="content">   <router-outlet></router-outlet> </div>
       

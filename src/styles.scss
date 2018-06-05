@@ -8,6 +8,12 @@
     justify-content: center;
     align-items: center;
   }
+
+  .example-card:hover{
+    box-shadow: -1px 10px 29px 0px rgba(133, 135, 140, 0.8) !important;
+    cursor: pointer !important;
+  }
+
   
   .box {  
     z-index: 9999;
@@ -120,3 +126,4 @@ img {
 } 
  
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+

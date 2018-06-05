@@ -25,7 +25,7 @@
               </mat-card-actions>
             </mat-card>   
       </div> 
-      <button style="width:100%" (click)="LoadMoreNews()" mat-button>Load More...</button>
+      <button style="width:100%" (click)="LoadMoreNews()" *ngIf="this.news.length > 0" mat-button>Load More...</button>
   </div> 
    
  
