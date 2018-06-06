@@ -36,6 +36,11 @@ export class NewsService {
     return this.httpService.Get<GetNewsByIdResult>(this.appSettings.GetSettings().ServerUrl + this.ServiceApiUrl+newsId);
   } 
 
+  GetImagePath(id)
+  {
+    return this.appSettings.GetSettings().ServerUrl +"uploads/img/news/"+id+".jpg";
+  }
+
   Save(news :News) : Observable<OperationResult> 
   {   
     var requestData = new SaveNewsRequest(news); 

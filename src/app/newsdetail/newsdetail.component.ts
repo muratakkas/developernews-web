@@ -37,8 +37,7 @@ export class NewsdetailComponent implements OnInit {
 
   GetImageAsBase64(item:News)
   {    
-    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
-        + this.currentNews.Icon) 
+    return this.newsService.GetImagePath(item.Id);
   }
 
 }

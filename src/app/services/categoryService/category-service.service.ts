@@ -31,6 +31,11 @@ export class CategoryService  {
     return this.httpService.Post<ICategoryResult>(this.appSettings.GetSettings().ServerUrl + this.ServiceApiUrl_GetList,requestData);
   } 
 
+  GetImagePath(id)
+  {
+    return this.appSettings.GetSettings().ServerUrl +"uploads/img/categories/"+id+".jpg";
+  }
+
   GetById(newsId) : Observable<GetCategoryByIdResult> 
   {   
     var requestData = new OperationRequest(); 

@@ -96,8 +96,7 @@ export class CategoriesComponent implements OnInit {
   
   GetImageAsBase64(item:Category)
   {    
-    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
-        + item.Icon) 
+    return this.categoryService.GetImagePath(item.Id);
   }
   Get()
     {   
