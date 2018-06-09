@@ -5,11 +5,11 @@
                         <mat-card-title>Add News</mat-card-title>
                     
             <form novalidate   [formGroup]="myForm"  (ngSubmit)="save(myForm.value, myForm.valid)">
-                        <div  class="form-group" >
+                        <div style="display: none"  class="form-group" >
                                         <label for="Id">Id:</label>
                                         <input readonly name="Id" formControlName="Id" class="form-control"> 
                          </div>
-                         <div  class="form-group" >
+                         <div  style="display: none" class="form-group" >
                                         <label for="CategoryId">CategoryId:</label>
                                         <input readonly name="CategoryId" formControlName="CategoryId" class="form-control"> 
                          </div>
@@ -30,11 +30,15 @@
                 </div>
                 <div  class="form-group" >
                                
-                            <label for="Icon">Icon:</label> <button type="submit" class="btn btn-default"   (click)="clearIcon()" >Clear</button>
-                            <img [src]="imageSrc" style="    border: solid;
-                            border-color: cornflowerblue;max-width:300px;max-height:300px"/>
-                              <input  class="form-control" name="Icon" id="Icon"   type="file" accept="image/*" (change)="handleIconChange($event)" />  
-                    </div>   
+                            <label for="Icon">Icon:</label>
+                            <a  onclick="document.getElementById('Icon').click();"  class="btn btn-default"   >Browse</a> 
+                            
+                            <a   class="btn btn-default"   (click)="clearIcon()" >Clear</a> 
+                              <input   style="display: none" class="form-control" name="Icon" id="Icon"   type="file" accept="image/*" (change)="handleIconChange($event)" />  
+                    </div>  
+                    <div  class="form-group" >
+                        <img [src]="GetImage()" style="    border: solid;   border-color: cornflowerblue;max-width:300px;max-height:300px"/>
+                  </div>       
                     <div  class="form-group" >
                             <small [hidden]="imageSrc || !submitted"  class="alert alert-danger">
                                     Icon is required 

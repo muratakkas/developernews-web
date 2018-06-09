@@ -5,6 +5,6 @@ export class   Category {
     Id  : number;
     ParentId  : number;
     CreateUser  : string;
-      
+    IconName  : string;
 }
    

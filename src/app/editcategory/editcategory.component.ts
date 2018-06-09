@@ -29,6 +29,8 @@ export class EditcategoryComponent implements OnInit {
   });
   submitted = false;
   imageSrc = "";
+  uploadedImageSrc = "";
+  iconName = "";
   newsContent = "";
   readonly IMAGE_PREFIX = "data:image/jpeg;base64,";
 
@@ -80,19 +82,31 @@ export class EditcategoryComponent implements OnInit {
   this.myForm.controls.Name.setValue(Item.Name); 
   this.myForm.controls.Id.setValue(Item.Id);
   this.myForm.controls.ParentId.setValue(Item.ParentId);
-  this.imageSrc = this.addImagePrefix(Item.Icon);  
+  this.imageSrc =  this.categoryService.GetImagePath(Item.IconName); 
+  this.iconName =Item.IconName;
  }
 
   
  bindFormToModel(formModel : Category) : Category
  {  
-  formModel.Icon = this.removeImagePrefix(this.imageSrc); 
+  formModel.Icon = this.removeImagePrefix(this.uploadedImageSrc); 
+  formModel.IconName = this.iconName; 
   return formModel;
  }
 
+ GetImage()
+ {    debugger;
+   return this.uploadedImageSrc.length > 0 ? this.uploadedImageSrc :this.imageSrc;
+ }
+  
+ CheckImageSelected()
+ {    
+   return this.uploadedImageSrc.length > 0 || this.imageSrc.length > 0;
+ }
  
   clearIcon() {
     this.imageSrc = "";
+    this.uploadedImageSrc = "";
     window["jQuery"]("#Icon").val("");  
   }
   handleIconChange(e) {
@@ -108,13 +122,12 @@ export class EditcategoryComponent implements OnInit {
   }
   _handleReaderLoaded(e) {
     let reader = e.target;
-    this.imageSrc = reader.result;
-    console.log(this.imageSrc)
+    this.uploadedImageSrc = reader.result; 
   } 
  
 save(model: Category, isValid: boolean) { 
   this.submitted = true;
-  if(!isValid ||this.imageSrc == "") return;  
+  if(!isValid || !this.CheckImageSelected()) return;  
   this.model = this.bindFormToModel(model);
   this.openDialog(); 
 }

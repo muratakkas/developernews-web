@@ -7,6 +7,7 @@ export class   News {
     Icon  : string;
     Id  : number;
     Subject  : string;
+    IconName  : string;
       
 }
   

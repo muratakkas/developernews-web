@@ -29,6 +29,8 @@ export class EditnewsComponent implements OnInit {
   });
   submitted = false;
   imageSrc = "";
+  uploadedImageSrc = "";
+  iconName = "";
   newsContent = "";
   readonly IMAGE_PREFIX = "data:image/jpeg;base64,";
 
@@ -83,8 +85,9 @@ export class EditnewsComponent implements OnInit {
   this.myForm.controls.CategoryId.setValue(Item.CategoryId);
   this.myForm.controls.Subject.setValue(Item.Subject);
   this.myForm.controls.Id.setValue(Item.Id);
-  this.imageSrc = this.addImagePrefix(Item.Icon); 
+  this.imageSrc =  this.newsService.GetImagePath(Item.IconName); 
   this.newsContent = Item.Content;
+  this.iconName =Item.IconName;
  }
 
   
@@ -92,13 +95,23 @@ export class EditnewsComponent implements OnInit {
  {
   formModel.CategoryId = parseInt(this.myForm.controls['CategoryId'].value);
   formModel.Content = this.newsContent;
-  formModel.Icon = this.removeImagePrefix(this.imageSrc); 
+  formModel.Icon = this.removeImagePrefix(this.uploadedImageSrc); 
+  formModel.IconName = this.iconName; 
   return formModel;
  }
 
- 
+ GetImage()
+ {    
+   return this.uploadedImageSrc.length > 0 ? this.uploadedImageSrc :this.imageSrc;
+ }
+  
+ CheckImageSelected()
+ {    
+   return this.uploadedImageSrc.length > 0 || this.imageSrc.length > 0;
+ }
   clearIcon() {
     this.imageSrc = "";
+    this.uploadedImageSrc = "";
     window["jQuery"]("#Icon").val("");  
   }
   handleIconChange(e) {
@@ -114,13 +127,13 @@ export class EditnewsComponent implements OnInit {
   }
   _handleReaderLoaded(e) {
     let reader = e.target;
-    this.imageSrc = reader.result;
+    this.uploadedImageSrc = reader.result;
     console.log(this.imageSrc)
   } 
  
 save(model: News, isValid: boolean) { 
   this.submitted = true;
-  if(!isValid || (this.newsContent == "" || this.newsContent.length <= 100) || this.imageSrc == "") return;  
+  if(!isValid || (this.newsContent == "" || this.newsContent.length <= 100) || !this.CheckImageSelected()) return;  
   this.model = this.bindFormToModel(model);
   this.openDialog(); 
 }

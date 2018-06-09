@@ -34,8 +34,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { InjectionToken } from '@angular/core';
 
 //Import Directives
-import { AuthGuard } from './directives/authguard/authguard';
- 
+import { AuthGuard } from './directives/authguard/authguard'; 
 
 import {
   MatAutocompleteModule,
@@ -69,7 +68,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule,
+  MatTooltipModule, 
 } from '@angular/material';
 
 
@@ -127,7 +126,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    CKEditorModule,
+    CKEditorModule,  
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-center', 

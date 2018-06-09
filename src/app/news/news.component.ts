@@ -108,7 +108,7 @@ export class NewsComponent implements OnInit {
 
   GetImageAsBase64(item:News)
   {    
-    return this.newsService.GetImagePath(item.Id);
+    return this.newsService.GetImagePath(item.IconName);
   }
   
   Get()

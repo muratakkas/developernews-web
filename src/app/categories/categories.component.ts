@@ -96,7 +96,7 @@ export class CategoriesComponent implements OnInit {
   
   GetImageAsBase64(item:Category)
   {    
-    return this.categoryService.GetImagePath(item.Id);
+    return this.categoryService.GetImagePath(item.IconName);
   }
   Get()
     {   
@@ -106,8 +106,7 @@ export class CategoriesComponent implements OnInit {
           debugger;
         newsResult.Items.forEach((itm:Category) => { 
             this.categories.push(itm);
-          });
-          window["gridmanager"].init(); 
+          }); 
         }
                ); 
     }

@@ -30,6 +30,14 @@ export class NewsService {
     return this.httpService.Post<INewsResult>(this.appSettings.GetSettings().ServerUrl + this.ServiceApiUrl_GetList,requestData);
   } 
 
+  GetLastNews() : Observable<INewsResult> 
+  {   
+    var requestData = new OperationRequest();
+    requestData.SetCurrentPage(0)
+    .SetPageCount(10) 
+    return this.httpService.Post<INewsResult>(this.appSettings.GetSettings().ServerUrl + this.ServiceApiUrl_GetList,requestData);
+  } 
+
   GetById(newsId) : Observable<GetNewsByIdResult> 
   {   
     var requestData = new OperationRequest(); 

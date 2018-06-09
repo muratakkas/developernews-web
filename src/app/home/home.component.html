@@ -1,1 +1,18 @@
- Welcome to home
+ 
+
+<div class="slideshow-container">
+
+<div class="mySlides fade"   *ngFor="let item of this.news" >
+  <div class="numbertext">1 / 3</div>
+  <img [src]="GetImageAsBase64(item)" alt="" width="100%">
+  <div class="text">{{item.Subject}}</div>
+</div> 
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"  *ngFor="let item of this.news" ></span>  
+</div>
+ 
+
+ 
