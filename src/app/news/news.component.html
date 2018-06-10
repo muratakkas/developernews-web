@@ -6,12 +6,12 @@
    
   <div class="row">
       <div class="col-lg-3 col-md-5 col-sm-8  col-xs-12" style="margin:10px;    max-width: 800px;"  *ngFor="let item of this.news" > 
-          <mat-card   class="example-card"  (click)="OpenDetails(item.Id)" > 
+          <mat-card   class="example-card"  > 
               <mat-card-header style="    overflow: hidden;">  
                 <mat-card-title>{{item.Subject}}</mat-card-title>
               </mat-card-header>
-              <img   style=" height: 200px;   width: 100%; "  [src]="GetImageAsBase64(item)"> 
-              <mat-card-content style="overflow: hidden;height:130px;   margin-top: 10px;">
+              <img   style=" height: 200px;   width: 100%; "  [src]="GetImageAsBase64(item)" (click)="OpenDetails(item.Id)"> 
+              <mat-card-content style="overflow: hidden;height:130px;   margin-top: 10px;"  (click)="OpenDetails(item.Id)">
                 <div [innerHTML]="GetContentFirstList(item)"> 
                 </div>
               </mat-card-content>
