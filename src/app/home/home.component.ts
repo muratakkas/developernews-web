@@ -42,11 +42,7 @@ private subscription: Subscription;
       }); 
   }
   slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
-  OpenDetails(id)
-  {
-    this.router.navigate(['newsdetail/'+id]);
-  }  
- 
+  
   GetImageAsBase64(item:News)
   {    
     return this.newsService.GetImagePath(item.IconName);
@@ -64,11 +60,14 @@ private subscription: Subscription;
           this.subscription = this.timer.subscribe(ticks=> {
             this.LoadSlider();
           });
-
-        
         }   
         ); 
     }
+
+    OpenDetails(id)
+    {
+      this.router.navigate(['newsdetail/'+id]);
+    } 
 
     LoadSlider()
     {
@@ -89,6 +88,9 @@ private subscription: Subscription;
         }
         slides[ this.slideIndex-1]["style"]["display"] = "block";  
         dots[ this.slideIndex-1].className += " active";
+
+        document.getElementById("dotcontainer")["style"]["display"] = "block";  
+        
       } 
     }
  
